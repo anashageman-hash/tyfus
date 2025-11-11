@@ -1,90 +1,67 @@
-print("Kies het type procentsom:")
-print("1. Percentage van een getal berekenen")
-print("2. Hoeveel procent iets is van iets anders")
-print("3. Procentuele stijging")
-print("4. Procentuele daling")
-print("5. Nieuwe waarde na stijging")
-print("6. Oude waarde voor stijging")
+def main():
+    print("=== Procenten Calculator ===")
+    print("Kies een optie:")
+    print("1. Bereken x% van een getal")
+    print("2. Bereken hoeveel procent een getal is van een ander")
+    print("3. Verhoog een getal met een percentage")
+    print("4. Verlaag een getal met een percentage")
+    print("5. Bereken procentuele toename tussen twee getallen")
+    print("6. Bereken procentuele afname tussen twee getallen")
+    print("7. Bereken oud getal bij toename")
+    print("8. Bereken oud getal bij afname")
 
-keuze = int(input("Maak je keuze (1-6): "))
+    keuze = input("Optie (1-8): ")
 
-def procent_van_getal():
-    getal = float(input("Welk getal? "))
-    procent = float(input("Hoeveel procent daarvan? "))
-    resultaat = getal * procent / 100
-    print(procent, "% van", getal, "=", resultaat)
+    if keuze == "1":
+        getal = float(input("Voer het totaal in: "))
+        pct = float(input("Voer het percentage in: "))
+        resultaat = (pct / 100) * getal
+        print(f"{pct}% van {getal} is {resultaat}")
 
-def hoeveel_procent_van():
-    deel = float(input("Welk deel? "))
-    geheel = float(input("Van welk geheel? "))
-    resultaat = deel / geheel * 100
-    print(deel, "is", round(resultaat, 2), "% van", geheel)
+    elif keuze == "2":
+        deel = float(input("Voer het deel in: "))
+        totaal = float(input("Voer het totaal in: "))
+        pct = (deel / totaal) * 100
+        print(f"{deel} is {pct:.2f}% van {totaal}")
 
-def procentuele_stijging():
-    oud = float(input("Oude waarde: "))
-    nieuw = float(input("Nieuwe waarde: "))
-    stijging = (nieuw - oud) / oud * 100
-    print("Stijging:", round(stijging, 2), "%")
+    elif keuze == "3":
+        getal = float(input("Voer het getal in: "))
+        pct = float(input("Percentage van toename: "))
+        resultaat = getal * (1 + pct / 100)
+        print(f"Na een toename van {pct}% is het {resultaat}")
 
-def procentuele_daling():
-    oud = float(input("Oude waarde: "))
-    nieuw = float(input("Nieuwe waarde: "))
-    daling = (oud - nieuw) / oud * 100
-    print("Daling:", round(daling, 2), "%")
+    elif keuze == "4":
+        getal = float(input("Voer het getal in: "))
+        pct = float(input("Percentage van afname: "))
+        resultaat = getal * (1 - pct / 100)
+        print(f"Na een afname van {pct}% is het {resultaat}")
 
-def nieuwe_waarde_na_stijging():
-    oud = float(input("Oude waarde: "))
-    procent = float(input("Stijging in procent: "))
-    nieuw = oud * (1 + procent / 100)
-    print("Nieuwe waarde =", nieuw)
+    elif keuze == "5":
+        oud = float(input("Oud getal: "))
+        nieuw = float(input("Nieuw getal: "))
+        pct = ((nieuw / oud) - 1) * 100
+        print(f"Procentuele toename: {pct:.2f}%")
 
-def oude_waarde_voor_stijging():
-    nieuw = float(input("Nieuwe waarde: "))
-    procent = float(input("Stijging in procent: "))
-    oud = nieuw / (1 + procent / 100)
-    print("Oude waarde =", oud)
+    elif keuze == "6":
+        oud = float(input("Oud getal: "))
+        nieuw = float(input("Nieuw getal: "))
+        pct = (1 - (nieuw / oud)) * 100
+        print(f"Procentuele afname: {pct:.2f}%")
 
-if keuze == 1:
-    procent_van_getal()
-elif keuze == 2:
-    hoeveel_procent_van()
-elif keuze == 3:
-    procentuele_stijging()
-elif keuze == 4:
-    procentuele_daling()
-elif keuze == 5:
-    nieuwe_waarde_na_stijging()
-elif keuze == 6:
-    oude_waarde_voor_stijging()
-else:
-    print("Ongeldige keuze.")
+    elif keuze == "7":
+        nieuw = float(input("Nieuw getal: "))
+        pct = float(input("Percentage van toename: "))
+        oud = nieuw / (1 + pct / 100)
+        print(f"Oud getal voor toename: {oud}")
 
-while True:
-    print("\nKies het type procentsom:")
-    print("1. Percentage van een getal berekenen")
-    print("2. Hoeveel procent iets is van iets anders")
-    print("3. Procentuele stijging")
-    print("4. Procentuele daling")
-    print("5. Nieuwe waarde na stijging")
-    print("6. Oude waarde voor stijging")
-    print("7. Stoppen")
+    elif keuze == "8":
+        nieuw = float(input("Nieuw getal: "))
+        pct = float(input("Percentage van afname: "))
+        oud = nieuw / (1 - pct / 100)
+        print(f"Oud getal voor afname: {oud}")
 
-    keuze = int(input("Maak je keuze (1-7): "))
-
-    if keuze == 1:
-        procent_van_getal()
-    elif keuze == 2:
-        hoeveel_procent_van()
-    elif keuze == 3:
-        procentuele_stijging()
-    elif keuze == 4:
-        procentuele_daling()
-    elif keuze == 5:
-        nieuwe_waarde_na_stijging()
-    elif keuze == 6:
-        oude_waarde_voor_stijging()
-    elif keuze == 7:
-        print("Programma afgesloten.")
-        break
     else:
-        print("Ongeldige keuze.")
+        print("Ongeldige optie!")
+
+if __name__ == "__main__":
+    main()
